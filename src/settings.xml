@@ -1,0 +1,19 @@
+<settings>
+  <servers>
+    <server>
+      <id>TestDeploy</id>
+      <username>upandrunning</username>
+      <password>upandrunning1</password>
+    </server>
+    <server>
+      <id>SnapshotRepository</id>
+      <username>wtabuild</username>
+      <password>wtabuild1</password>
+    </server>
+    <server>
+      <id>ReleaseRepository</id>
+      <username>wtabuild</username>
+      <password>wtabuild1</password>
+    </server>
+  </servers>
+</settings>

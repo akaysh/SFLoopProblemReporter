@@ -1,0 +1,28 @@
+# trigger build
+version: 2
+debug: true
+jobs:
+  build:
+    docker:
+      - image: akaysh/python3-pandas-numpy:latest
+    steps:
+      - run: mkdir ~/.ssh && ssh-keyscan -t rsa github.intuit.com >> ~/.ssh/known_hosts
+      - checkout
+      - run:
+          name: "Installing Dependencies"
+          command: "pip3 install -r requirements.txt"
+      - run:
+          name: "Fetch SFLoop Data and Create Reports"
+          command: "python3 src/createReports.py"
+workflows:
+  version: 2
+  build:
+    triggers:
+      - schedule:
+          cron: "0 6 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
